@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  email: akop2003@gmail.com
+  name: Jacob
+  password_digest: "$2a$12$.B/iVngtM19cLo./qS2KMOR7sAHa/BN2WnoMtUtrdD5lktrs3WzxK"
+
+# two:
+#   email: MyString
+#   name: MyString
+#   password_digest: MyString

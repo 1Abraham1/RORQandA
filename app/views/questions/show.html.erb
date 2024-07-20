@@ -1,0 +1,48 @@
+<% provide :page_title, @question.title %>
+<% currently_at t('menu.questions') %>
+
+<section class="card-header">
+  <%# <%= question.user.gravatar % > %>
+  <%= @question.user.name %>
+</section>
+
+<h1 class="mb-4"><%= @question.title %></h1>
+
+<time datetime="<%= @question.formatted_created_at %>">
+  <%= @question.formatted_created_at %>
+</time>
+
+<div class="lead my-3">
+  <%= sanitize @question.body %>
+</div>
+
+<% if current_user.present? %>
+<% if current_user.id == @question.user_id %>
+  <div class="btn-group">
+    <%= link_to t('global.button.show'), question_path(@question), class: 'btn btn-primary' %> 
+    <%= link_to t('global.button.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
+    <%= button_to t('global.button.delete'), question_path(@question), class: 'btn btn-danger',
+      method: :delete, data: {confirm: t('global.dialog.you_sure')} %>
+  </div>
+<% end %>
+<% end %>
+
+<hr class="my-3">
+
+<% if current_user.present? %>
+  <h2 class="mb-3"><%= t('.write_answer') %></h2>
+  <%= render 'answers/form' %>
+<% end %>
+
+<h2 class="mt-5"><%= t('.answers') %></h2>
+
+<% if @allanswers.count > 7 %>
+  <%= paginate @answers %>
+<% end %>
+
+<%= render partial: 'answers/answer', collection: @answers,
+  as: :answer, locals: {question: @question} %>
+
+<% if @allanswers.count > 7 %>
+  <%= paginate @answers %> 
+<% end %>

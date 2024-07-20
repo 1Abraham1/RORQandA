@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= full_title(yield(:page_title)) %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%# <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script> %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%# <%= javascript_include_tag "application" % > %>
+  </head>
+
+  <body>
+    <%= yield :main_menu %>
+
+    <main class="container mt-3">
+      <% flash.each do |k, v| %>
+        <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <dialog id='turbo-confirm' class='dialog'>
+      <form method="dialog" class="dialog-form">
+        <p class="fs-3">Вы уверены?</p>
+        <div class="dialog-buttons">
+          <button class="btn btn-primary me-2" value="confirm">Подтвердить</button>
+          <button class="btn btn-secondary" value="cancel">Отмена</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

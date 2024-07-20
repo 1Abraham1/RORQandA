@@ -1,0 +1,33 @@
+/*
+ *= require bootstrap
+ *
+ *
+*/
+
+body {
+  background-image: url(fon.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  /* background-repeat: no-repeat; */
+}
+
+#game-board {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #000;
+}
+
+.snake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: green;
+}
+
+.food {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
